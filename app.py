@@ -4,8 +4,15 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 
 @app.route('/')
-def index():
-    return "Hello World!"
+@app.route('/<name>')
+def index(name=None):
+    	group_list = ['James', 'Jason', 'Alex', 'Sungbin']
+    	my_group = {'James': 68, "Jason": 70, "Alex":75, "Sungbin": 70}
+	return render_template("index.html", name=name, group=my_group)
+
+@app.route('/login')
+def login():
+	return render_template('login.html')
 
 @app.route('/hello')
 def hello():
@@ -18,17 +25,6 @@ def hello_example():
 @app.route('/echo/<message>')
 def echo(message):
 	return "This is a dynamic message: " + message
-
-@app.route('/me')
-@app.route('/me/<name>')
-def render_me(name=None):
-	group_list = ["James", "Jason", "Alex", "Sungbin"]
-	my_group = {'James': 68, "Jason": 70, "Alex":75, "Sungbin": 70}
-	return render_template("me.html", name=name, names=group_list)
-
-@app.route('/login')
-def login():
-	return render_template('login.html')
 
 if __name__ == "__main__":
 	app.run()

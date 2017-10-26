@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div>
+		<h1>
+			Hello {{name}}
+		</h1>
+	</div>
+	<div>
+		{% for person, age in group.items() %}
+				{% if age < 72 %}
+				<p><b>{{person}}</b></p>
+				{% else %}
+				<p><i>{{person}}</i></p>
+				{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}
