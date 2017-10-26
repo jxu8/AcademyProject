@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{%block content%}
+<html>
+<head>
+<title>Me</title>
+</head>
+<body>
+	<div>
+		<h1>
+			Hello {{name}}
+		</h1>
+	</div>
+	<div>
+		{% for name in names %}
+				<p>{{name}}</p>
+		{% endfor %}
+	</div>
+</body>
+</html>
+{% endblock %}
